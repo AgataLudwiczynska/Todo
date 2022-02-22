@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className="Header">
         <h1>Todo List</h1>
       </header>
       <Form text={text} setText={setText} list={list} setList={setList} />

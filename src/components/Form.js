@@ -17,8 +17,13 @@ const Form = ({ text, setText, list, setList }) => {
   };
 
   return (
-    <form>
-      <input value={text} onChange={inputTextHandler} type="text"></input>
+    <form className="Form-wrapper">
+      <input
+        className="text"
+        value={text}
+        onChange={inputTextHandler}
+        type="text"
+      ></input>
       <button onClick={addText}>OK</button>
     </form>
   );

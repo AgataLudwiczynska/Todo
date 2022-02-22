@@ -3,7 +3,7 @@ import Todo from "./Todo";
 
 const TodoList = ({ list, setList }) => {
   return (
-    <div>
+    <div className="TodoList-wrapper">
       {list.map((element) => (
         <Todo el={element} key={element.id} setList={setList} list={list} />
       ))}

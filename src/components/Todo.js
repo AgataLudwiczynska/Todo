@@ -33,15 +33,19 @@ const Todo = ({ el, setList, list }) => {
   };
 
   return (
-    <div>
-      <p>{el.name}</p>
-      <button onClick={checkHandler}>
+    <div
+      className={`text Todo-wrapper ${
+        el.important === true ? "important" : ""
+      } ${el.complete === true ? "complete" : ""}`}
+    >
+      <p className="Todo-name">{el.name}</p>
+      <button className="Todo-button" onClick={checkHandler}>
         <FaCheck />
       </button>
-      <button onClick={importantHandler}>
+      <button className="Todo-button" onClick={importantHandler}>
         <FaExclamation />
       </button>
-      <button onClick={deleteHandler}>
+      <button className="Todo-button" onClick={deleteHandler}>
         <FaTrashAlt />
       </button>
     </div>
