@@ -1,37 +1,9 @@
 import React from "react";
 import { FaTrashAlt, FaCheck, FaExclamation } from "react-icons/fa";
+import { useList } from "../hooks/list-hooks";
 
-const Todo = ({ el, setList, list }) => {
-  const deleteHandler = () => {
-    setList(list.filter((todo) => todo.id !== el.id));
-  };
-
-  const checkHandler = () => {
-    setList(
-      list.map((todo) => {
-        if (todo.id === el.id) {
-          return { ...el, complete: !el.complete };
-        }
-        return todo;
-      })
-    );
-  };
-
-  const importantHandler = () => {
-    setList(
-      list
-        .map((todo) => {
-          if (todo.id === el.id) {
-            return { ...el, important: !el.important };
-          }
-          return todo;
-        })
-        .sort((a, b) => {
-          return b.important - a.important;
-        })
-    );
-  };
-
+const Todo = ({ el }) => {
+  const { deleteTodo, checkTodo, importantTodo } = useList();
   return (
     <div
       className={`text Todo-wrapper ${
@@ -39,13 +11,13 @@ const Todo = ({ el, setList, list }) => {
       } ${el.complete === true ? "complete" : ""}`}
     >
       <p className="Todo-name">{el.name}</p>
-      <button className="Todo-button" onClick={checkHandler}>
+      <button className="Todo-button" onClick={() => checkTodo(el.id)}>
         <FaCheck />
       </button>
-      <button className="Todo-button" onClick={importantHandler}>
+      <button className="Todo-button" onClick={() => importantTodo(el.id)}>
         <FaExclamation />
       </button>
-      <button className="Todo-button" onClick={deleteHandler}>
+      <button className="Todo-button" onClick={() => deleteTodo(el.id)}>
         <FaTrashAlt />
       </button>
     </div>

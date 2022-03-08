@@ -1,18 +1,15 @@
 import React from "react";
-import nextId from "react-id-generator";
+import { useList } from "../hooks/list-hooks";
 
-const Form = ({ text, setText, list, setList }) => {
-  const htmlId = nextId();
+const Form = ({ text, setText }) => {
+  const { addTodo } = useList();
 
   const inputTextHandler = (e) => {
     setText(e.target.value);
   };
   const addText = (e) => {
     e.preventDefault();
-    setList([
-      ...list,
-      { name: text, complete: false, important: false, id: htmlId },
-    ]);
+    addTodo(text);
     setText("");
   };
 

@@ -1,11 +1,13 @@
 import React from "react";
 import Todo from "./Todo";
+import { useList } from "../hooks/list-hooks";
 
-const TodoList = ({ list, setList }) => {
+const TodoList = () => {
+  const { list } = useList();
   return (
     <div className="TodoList-wrapper">
       {list.map((element) => (
-        <Todo el={element} key={element.id} setList={setList} list={list} />
+        <Todo key={element.id} el={element} />
       ))}
     </div>
   );

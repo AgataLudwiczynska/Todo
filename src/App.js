@@ -3,41 +3,36 @@ import "./App.css";
 //Import components
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
+import { useList } from "./hooks/list-hooks";
 
 function App() {
   //useState
-  const [text, setText] = useState();
-  const [list, setList] = useState([]);
+  const [text, setText] = useState("");
+  const { list, addSaveTodos } = useList();
+  const keyLocalStorage = "list-todos";
 
   //useEffect
+  //getLocalData
   useEffect(() => {
-    getLocalData();
+    if (localStorage.getItem(keyLocalStorage === null))
+      localStorage.setItem(keyLocalStorage, JSON.stringify([]));
+    else {
+      addSaveTodos(keyLocalStorage);
+    }
   }, []);
 
+  //saveLocalData
   useEffect(() => {
-    saveLocalData();
+    localStorage.setItem(keyLocalStorage, JSON.stringify(list));
   }, [list]);
-
-  const saveLocalData = () => {
-    localStorage.setItem("list-todos", JSON.stringify(list));
-  };
-
-  const getLocalData = () => {
-    if (localStorage.getItem("list-todos" === null))
-      localStorage.setItem("list-todos", JSON.stringify([]));
-    else {
-      let localList = JSON.parse(localStorage.getItem("list-todos"));
-      setList(localList);
-    }
-  };
 
   return (
     <div className="App">
       <header className="Header">
         <h1>Todo List</h1>
       </header>
-      <Form text={text} setText={setText} list={list} setList={setList} />
-      <TodoList list={list} setList={setList} />
+      <Form text={text} setText={setText} />
+      <TodoList />
     </div>
   );
 }
