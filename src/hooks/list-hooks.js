@@ -1,11 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
-import nextId from "react-id-generator";
+import { v4 } from "uuid";
 
 const ListContext = createContext();
 export const useList = () => useContext(ListContext);
 
 const ListProvider = ({ children }) => {
-  const htmlId = nextId();
   const [list, setList] = useState([]);
 
   //available functions
@@ -16,7 +15,7 @@ const ListProvider = ({ children }) => {
         name: name,
         complete: false,
         important: false,
-        id: htmlId,
+        id: v4(),
       },
     ]);
   };

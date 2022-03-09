@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 //Import components
 import Form from "./components/Form";
@@ -7,7 +7,6 @@ import { useList } from "./hooks/list-hooks";
 
 function App() {
   //useState
-  const [text, setText] = useState("");
   const { list, addSaveTodos } = useList();
   const keyLocalStorage = "list-todos";
 
@@ -31,7 +30,7 @@ function App() {
       <header className="Header">
         <h1>Todo List</h1>
       </header>
-      <Form text={text} setText={setText} />
+      <Form />
       <TodoList />
     </div>
   );

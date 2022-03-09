@@ -1,24 +1,23 @@
 import React from "react";
+import { useInput } from "../hooks/input-hooks";
 import { useList } from "../hooks/list-hooks";
 
-const Form = ({ text, setText }) => {
+const Form = () => {
+  const [text, resetText] = useInput("");
   const { addTodo } = useList();
 
-  const inputTextHandler = (e) => {
-    setText(e.target.value);
-  };
   const addText = (e) => {
     e.preventDefault();
-    addTodo(text);
-    setText("");
+    addTodo(text.value);
+    resetText();
   };
 
   return (
     <form className="Form-wrapper">
       <input
         className="text"
-        value={text}
-        onChange={inputTextHandler}
+        value={text.value}
+        onChange={text.onChange}
         type="text"
       ></input>
       <button onClick={addText}>OK</button>
