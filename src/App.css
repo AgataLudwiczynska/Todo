@@ -111,3 +111,26 @@ button {
   border: none;
   font-size: 1.8vw;
 }
+
+@media (orientation: portrait) {
+  .Header h1 {
+    font-size: 10vw;
+  }
+  .Form-wrapper input {
+    margin-right: 1%;
+    font-size: 4.5vw;
+  }
+  .Form-wrapper button {
+    font-size: 4.3vw;
+  }
+  .TodoList-wrapper {
+    width: 70vw;
+    height: 68vh;
+  }
+  .Todo-name {
+    font-size: 4vw;
+  }
+  .Todo-button {
+    font-size: 3.8vw;
+  }
+}
