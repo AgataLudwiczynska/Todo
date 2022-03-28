@@ -28,3 +28,4 @@ The project is ready, but I do not rule out that I will change something about i
 - you can delete the task
 - you can check off the task
 - you can set the importance of tasks
+- tasks are saved in local storage
